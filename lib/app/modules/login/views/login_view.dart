@@ -1,33 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tenova/app/routes/app_pages.dart';
+
 
 class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset:
-          false, // Menambahkan ini untuk menghindari perubahan ukuran saat keyboard muncul
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
-          // BACKGROUND BIRU
           Container(
-            color: Colors.blue,
+width: MediaQuery.of(context).size.width * 1.0,
+  height: MediaQuery.of(context).size.height * 0.5, 
+            color: Color(0XFFC8D7D7),
+            child: Image.asset('assets/logo/logo-p.png'),
           ),
 
-          // FORM LOGIN DENGAN BACKGROUND PUTIH & BORDER RADIUS DI BAGIAN ATAS
+          // FORM LOGIN
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height - 250, // Naik 190px
+              height: MediaQuery.of(context).size.height - 310,
               padding: const EdgeInsets.all(50.0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(40),
-                ),
+                  top: Radius.circular(40)), 
+                            
               ),
+              
               child: SingleChildScrollView(
-                // Membungkus dengan SingleChildScrollView
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -36,39 +40,73 @@ class LoginView extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue,
+                        color: Color(0XFF143C3C),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    SizedBox(height: 40),
                     TextField(
                       decoration: InputDecoration(
-                        labelText: "Username",
-                        border:
-                            OutlineInputBorder(), // Menambahkan border kotak
+                        hintText: "Username", 
+                        hintStyle: TextStyle(color: Color(0xFF143C3C)),
+                        filled: true,
+                        fillColor:
+                            Color(0xFFC8D7D7), // boleh kamu ubah atau hapus
+                        prefixIcon: Icon(Icons.person, color: Color(0xFF143C3C)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide
+                              .none, // ← ini yang menghilangkan garis tepi
+                        ),
                       ),
                     ),
-                    SizedBox(height: 16), // Spasi antar TextField
+                    SizedBox(height: 18),
                     TextField(
-                      obscureText: true,
                       decoration: InputDecoration(
-                        labelText: "Password",
-                        border:
-                            OutlineInputBorder(), // Menambahkan border kotak
+                        hintText: "NISN",
+                        hintStyle: TextStyle(color: Color(0xFF143C3C)),
+                        filled: true,
+                        fillColor:
+                            Color(0xFFC8D7D7),
+                        prefixIcon: Icon(Icons.credit_card, color: Color(0xFF143C3C)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide.none,
+                        ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    SizedBox(height: 18),
                     TextField(
-                      obscureText: true,
                       decoration: InputDecoration(
-                        labelText: "email",
-                        border: OutlineInputBorder(),
+                        hintText: "Email",
+                        hintStyle: TextStyle(color: Color(0xFF143C3C)),
+                        filled: true,
+                        fillColor:
+                            Color(0xFFC8D7D7),
+                        prefixIcon: Icon(Icons.email, color: Color(0xFF143C3C)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide.none,
+                        ),
                       ),
                     ),
-                    SizedBox(height: 20),
+
+                    SizedBox(height: 34),
                     ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Login"),
-                    ),
+                      onPressed: () {
+                        Get.offNamed(Routes.HOME);
+
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF143C3C),// Warna tombol
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(20), // <-- Radius sudut
+                        ),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 80, vertical: 14),
+                      ),
+                          child: Text("Login", style: TextStyle(color: Colors.white)),
+                      ),
                   ],
                 ),
               ),

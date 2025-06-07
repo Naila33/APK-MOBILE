@@ -12,7 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 1), () {
+    Timer(Duration(seconds: 3), () {
       Get.offNamed(Routes.LOGIN); // pindah ke login setelah 3 detik
     });
   }
